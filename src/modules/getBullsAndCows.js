@@ -22,12 +22,7 @@ function getBullsAndCows(userInput, numberToGuess) {
   for (let j = 0; j < computerString.length; j++) {
     if (userString[j] === computerString[j]) {
       bulls.push(userString[j]);
-    }
-
-    if (
-      computerString.includes(userString[j]) &&
-      !bulls.includes(userString[j])
-    ) {
+    } else if (computerString.includes(userString[j])) {
       cows++;
     }
   }

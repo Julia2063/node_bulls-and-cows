@@ -2,7 +2,7 @@
 'use strict';
 
 const { generateRandomNumber } = require('./modules/generateRandomNumber');
-const { getUserInput } = require('./modules/getUserInput');
+const { getUserInput, terminal } = require('./modules/getUserInput');
 const { getBullsAndCows } = require('./modules/getBullsAndCows');
 
 (async function app() {
@@ -11,6 +11,14 @@ const { getBullsAndCows } = require('./modules/getBullsAndCows');
 
   const res = getBullsAndCows(Number(input), numberToGuess);
 
-  console.log(`Computer guesses ${numberToGuess}`);
-  console.log(res);
+  if (res.bulls !== 4) {
+    console.log(
+      `Bulls: ${res.bulls}, Cows: ${res.cows} You lose(( Let's try again!))`,
+    );
+    app();
+  } else {
+    terminal.close();
+    console.log(`Computer guesses ${numberToGuess}`);
+    console.log(`Bulls: ${res.bulls}, Cows: ${res.cows}. You win))`);
+  }
 })();
